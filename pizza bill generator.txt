@@ -1,0 +1,52 @@
+class Pizza {
+  public Pizza(boolean veg) {
+    this.veg = veg;
+    if (veg) {
+      this.price = 2400;
+    } else {
+      this.price = 3200;
+    }
+  }
+
+  private boolean veg;
+  private int price;
+
+  public void addExtraCheese() {
+    this.price += 400;
+  }
+
+  public void addExtraToppings() {
+    this.price += 800;
+  }
+
+  public int takeaway() {
+    return this.price + 1600;
+  }
+
+  public int dineIn() {
+    return this.price;
+  }
+}
+
+class DeluxPizza extends Pizza {
+  public DeluxPizza(boolean veg) {
+    super(veg);
+    super.addExtraCheese();
+    super.addExtraToppings();
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    DeluxPizza vegDelux = new DeluxPizza(true);
+    DeluxPizza nonVegDelux = new DeluxPizza(false);
+
+    System.out.println("Veg deluxe pizza:");
+    System.out.println("Takeaway: " + vegDelux.takeaway() + " INR");
+    System.out.println("Dine-in: " + vegDelux.dineIn() + " INR");
+
+    System.out.println("Non-veg deluxe pizza:");
+    System.out.println("Takeaway: " + nonVegDelux.takeaway() + " INR");
+    System.out.println("Dine-in: " + nonVegDelux.dineIn() + " INR");
+  }
+}
